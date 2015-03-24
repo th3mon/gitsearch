@@ -47,10 +47,13 @@ else {
                 console.log(chalk.grey('Desc: ' + body.items[i].description + '\n'));
                 console.log(chalk.grey('Clone url: ' + body.items[i].clone_url + '\n'));
             }
+            
+            process.exit(0);
         }
         
         else if (error) {
             console.log(chalk.red('Error: ' + error));
+            process.exit(1);
         }
     });
 }
