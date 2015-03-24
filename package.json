@@ -1,15 +1,17 @@
 {
-    "name": "gitsearch",
-    "version": "0.0.1",
-
-    "description": "A simple command-line tool for searching git repositories",
-    "author": "Przemysław Szelenberger",
-    "engines": {
-      "node": ">=0.10"
-    },
-    "dependencies": {
-    },
-    "bin": {
-      "gitsearch": "gitsearch.js"
-    }
+  "name": "gitsearch",
+  "version": "0.0.1",
+  "description": "A simple command-line tool for searching git repositories",
+  "author": "Przemysław Szelenberger",
+  "engines": {
+    "node": ">=0.10"
+  },
+  "dependencies": {
+    "commander": "^2.7.1",
+    "request": "^2.53.0",
+    "chalk": "^1.0.0"
+  },
+  "bin": {
+    "gitsearch": "gitsearch.js"
+  }
 }
