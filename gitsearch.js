@@ -11,6 +11,7 @@ program
     .usage('[options] <keywords>')
     .option('-o, --owner [name]', 'Filter by the repositories owner')
     .option('-l, --language [language]', 'Filter by the repositories language')
+    .option('-f, --full', 'Full output without any styling')
     .parse(process.argv);
 
 if (!program.args.length) {
@@ -40,15 +41,21 @@ else {
         
         if (!error && response.statusCode == 200) {
             body = JSON.parse(body);
-        
-            for (; i < body.items.length; i += 1) {
-                console.log(chalk.cyan.bold.underline('Name: ' + body.items[i].name));
-                console.log(chalk.magenta.bold('Owner: ' + body.items[i].owner.login));
-                console.log(chalk.grey('Desc: ' + body.items[i].description + '\n'));
-                console.log(chalk.grey('Clone url: ' + body.items[i].clone_url + '\n'));
-            }
             
-            process.exit(0);
+            if (program.full) {
+                console.log(body);
+            }
+        
+            else {
+                for (; i < body.items.length; i += 1) {
+                    console.log(chalk.cyan.bold.underline('Name: ' + body.items[i].name));
+                    console.log(chalk.magenta.bold('Owner: ' + body.items[i].owner.login));
+                    console.log(chalk.grey('Desc: ' + body.items[i].description + '\n'));
+                    console.log(chalk.grey('Clone url: ' + body.items[i].clone_url + '\n'));
+                }
+            
+                process.exit(0);
+            }
         }
         
         else if (error) {
